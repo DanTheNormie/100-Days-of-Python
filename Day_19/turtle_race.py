@@ -4,7 +4,7 @@ import random
 colors = ["red", "orange", "yellow", "green", "blue", "purple"]
 
 scrn = Screen()
-scrn.setup(600, 800)
+scrn.setup(600, 500)
 scrn.bgcolor("black")
 turtle_list = []
 
@@ -39,10 +39,7 @@ def set_to_starting_pos():
 
     for t in turtle_list:
         curr_turtle_color = t.color()[1]
-        if curr_turtle_color == "blue":
-            t.goto(0, y_coord)
-        else:
-            t.goto(x_coord, y_coord)
+        t.goto(x_coord, y_coord)
         y_coord += space_between
 
 
@@ -62,7 +59,7 @@ def start_race(u_bet):
                 return
 
 
-create_turtles(5)
+create_turtles(8)
 
 set_to_starting_pos()
 
