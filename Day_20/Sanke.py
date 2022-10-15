@@ -79,9 +79,7 @@ class Sanke:
         self.turn_points.append((head_pos, _heading))
         self.head.setheading(_heading)
 
-
-        self.move_2()
-
+        self.move_1()
 
     def move_2(self):
         self.scrn.update()
@@ -126,17 +124,17 @@ class Sanke:
                             continue
 
             self.snake_body[i].fd(self.speed)
-        # while True:
-        #     self.scrn.update()
-        #     time.sleep(0.06)
-        #     prev_pos = self.head.pos()
-        #     prev_pos_2 = (0, 0)
-        #     self.head.setheading(_heading)
-        #     self.head.fd(15)
-        #     for i in range(1, len(self.snake_body)):
-        #         prev_pos_2 = self.snake_body[i].pos()
-        #         self.snake_body[i].goto(prev_pos)
-        #         prev_pos = prev_pos_2
+
+    def move_1(self):
+            self.scrn.update()
+            time.sleep(0.06)
+            prev_pos = self.head.pos()
+            prev_pos_2 = (0, 0)
+            self.head.fd(15)
+            for i in range(1, len(self.snake_body)):
+                prev_pos_2 = self.snake_body[i].pos()
+                self.snake_body[i].goto(prev_pos)
+                prev_pos = prev_pos_2
 
     def incr_snake_length(self, num):
         for i in range(num):
