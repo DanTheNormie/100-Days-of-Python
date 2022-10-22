@@ -1,6 +1,7 @@
 from turtle import Turtle, Screen
 import time
 
+COLORS = ["red", "blue", "orange"]
 UP = 90
 DOWN = 270
 LEFT = 180
@@ -46,7 +47,7 @@ class Sanke:
             offset = 0
         for i in range(num):
             self.turn_point_counter_list.append(0)
-            turt = Turtle(shape="square", visible=False)
+            turt = Turtle(shape="circle", visible=False)
             turt.speed("fastest")
             turt.pu()
             turt.color("green")
@@ -55,11 +56,29 @@ class Sanke:
             turt.showturtle()
             self.snake_body.append(turt)
 
+    def blink_(self):
+        for j in range(3):
+            for i in self.snake_body:
+                i.hideturtle()
+            self.head.screen.update()
+            time.sleep(0.01)
+            for i in self.snake_body:
+                i.color(COLORS[j % 3])
+                i.showturtle()
+            self.head.screen.update()
+            time.sleep(0.03)
+        for i in self.snake_body:
+            i.color("green")
     def detect_collision_with_food(self):
         if self.head.distance(self.food) < 15:
             self.update_scoreboard()
+            if self.scoreboard.score > self.scoreboard.highscore:
+                self.scoreboard.highscore = self.scoreboard.score
+                self.scoreboard.set_highscore()
+            self.scoreboard.write_highscore()
             self.food.goto_random_pos()
             self.incr_snake_length(1)
+            self.blink_()
 
     def detect_collision_with_wall(self):
         if abs(self.head.xcor()) > (self.scrn.window_width() / 2) - 15 or \
