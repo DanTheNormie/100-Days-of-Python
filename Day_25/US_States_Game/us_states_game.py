@@ -46,10 +46,7 @@ for i in range(0, 50):
 
     answer = screen.textinput(title=f"{title}", prompt="What's another state's name ?").title()
     if answer.lower() == "exit":
-        missed_state = []
-        for state in all_states_list:
-            if state not in guessed_states_list:
-                missed_state.append(state)
+        missed_state = [state for state in all_states_list if state not in guessed_states_list]
 
         missed_states_data_frame = pandas.DataFrame(missed_state)
         missed_states_data_frame.to_csv("missed_states.csv")
