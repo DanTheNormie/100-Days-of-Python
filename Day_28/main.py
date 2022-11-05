@@ -42,10 +42,11 @@ def start_cmd():
         global rep_counter
         match rep_counter:
 
-            case 8:
+            case 7:
                 time = LONG_BREAK_SEC
+                counter.config(text="✔✔✔✔")
                 title.config(text="{: ^13}".format(" Long Break 🍵"), font=(FONT_NAME, FONT_SIZE, FONT_STYLE), fg=BROWN)
-                rep_counter = 0
+                rep_counter = -1
 
             case rep_counter if not rep_counter % 2 == 0:
                 time = SHORT_BREAK_SEC
@@ -71,10 +72,10 @@ def reset_cmd():
 
 
 # buttons
-start_btn = Button(text="Start", command=start_cmd)
-start_btn.grid(row=3, column=1)
-reset_btn = Button(text="Reset", command=reset_cmd)
-reset_btn.grid(row=3, column=3)
+start_btn = Button(text="Start", bg=YELLOW, fg=PINK, font=(FONT_NAME, 20, FONT_STYLE), command=start_cmd)
+start_btn.grid(row=3, column=1, sticky='w'+'e')
+reset_btn = Button(text="Reset", bg=YELLOW, fg=PINK, font=(FONT_NAME, 20, FONT_STYLE), command=reset_cmd)
+reset_btn.grid(row=3, column=3, sticky='w'+'e')
 
 # pomodoro counter
 counter = Label(fg=GREEN, bg=YELLOW, font=(FONT_NAME, FONT_SIZE, FONT_STYLE))
@@ -89,7 +90,6 @@ def update_timer(time):
         time_sec = time % 60
 
         canvas.itemconfig(timer_txt, text=f"{time_min:02}:{time_sec:02}")
-
         timer = window.after(1, update_timer, time - 1)
     else:
         timer_running = False

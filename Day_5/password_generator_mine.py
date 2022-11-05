@@ -43,12 +43,7 @@ def generate():
     else:
       print(f"You can't have that many numbers!!! \n Valid range is between 0 and {char_remaining}")
 
-#Eazy Level - Order not randomised:
-#e.g. 4 letter, 2 symbol, 2 number = JduE&!91
 
-
-#Hard Level - Order of characters randomised:
-#e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
   print("\n\n------Debug Start------\n\n")
   print(f"total_char = {nr_char}")
   password = ""
@@ -80,7 +75,7 @@ def generate():
         print(f"rand_letter = {rand_letter}")
         password+=rand_letter
         nr_letters-=1
-    elif(rand_char_index == 2):
+    elif rand_char_index == 2:
       if(nr_symbols>0):
           rand_symbol = symbols[random.randint(0,len(symbols)-1)]
           print(f"rand_symbol = {rand_symbol}")
@@ -126,4 +121,5 @@ def generate():
   print("\n\n------Debug End------\n\n")
     
   print(f"\n\nRandom password is : {password}")
-  
+
+generate()
