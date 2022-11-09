@@ -1,1 +1,4 @@
-import Day_16.coffee_task.coffee_machine_2
+
+
+for i in range(1, 4):
+    print(i)

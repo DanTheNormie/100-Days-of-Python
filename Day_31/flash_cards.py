@@ -119,7 +119,6 @@ speech_btn.grid(row=0, column=2, sticky='e')
 flip_icon = PhotoImage(file='./images/flip (1).png')
 flip_btn = Button(
     text='FLIP',
-
     font=('Ariel', 16, 'bold'),
     highlightthickness=0,
     bg=BACKGROUND,
